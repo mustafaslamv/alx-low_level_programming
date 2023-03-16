@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include<unistd.h>
 
 /**
@@ -9,7 +8,7 @@
 
 int main(void)
 {
-	char *text = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-	write(1,text,strlen(text));
-	return (0);
+	char text[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	write(1,text,sizeof(text));
+	return (1);
 }
