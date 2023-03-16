@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<unistd.h>
 
 /**
  * main - Entry point
@@ -9,6 +10,6 @@
 int main(void)
 {
 	char *text = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-	fwrite(1,text,strlen(text));
+	write(1,text,strlen(text));
 	return (0);
 }
