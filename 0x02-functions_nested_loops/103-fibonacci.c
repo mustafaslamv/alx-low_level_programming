@@ -9,19 +9,25 @@ int main(void)
 {
 
 	int i;
-	unsigned long first = 0, second = 1, sum, totalsum;
+	unsigned long first = 0, second = 1, sum;
+	float totalsum;
 
-	for (i = 0; i < 50; i++)
+	while (1)
 	{
 		sum = first + second;
-		first = second;
-		second = sum;
 
-		if (sum % 2 == 0)
+		if (sum > 4000000)
+			break;
+		if ((sum % 2) == 0)
 		{
 			totalsum += sum;
 		}
+
+		first = second;
+		second = sum;
+
 	}
-	printf("%lu\n", totalsum);
+
+	printf("%.0f\n", totalsum);
 	return (0);
 }
