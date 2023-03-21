@@ -21,8 +21,7 @@ int main(void)
 		{
 			totalsum += sum;
 		}
-		printf("%lu\n", totalsum);
-
 	}
+	printf("%lu\n", totalsum);
 	return (0);
 }
