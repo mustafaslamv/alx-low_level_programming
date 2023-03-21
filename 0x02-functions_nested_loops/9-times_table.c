@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * table - function definition
+ * times_table - function definition
  */
 
-void table(void)
+void times_table(void)
 {
 	int j, i, d;
 
