@@ -4,6 +4,7 @@
  * print_number - print integer using putchar
  *@n: input number
  */
+
 void print_number(int n)
 {
 
@@ -11,7 +12,7 @@ void print_number(int n)
 
 	if (n < 0)
 	{
-		_putchar('-';
+		_putchar('-');
 		result = -result;
 	}
 
