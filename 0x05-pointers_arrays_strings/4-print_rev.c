@@ -15,14 +15,15 @@ void print_rev(char *s)
 		s++;
 	}
 
-	while (length != -1)
-	{
-		_putchar(*s);
-		length--;
-		s--;
-	}
+   int i = 0;
+   while (i <= length)
+   {
+      _putchar(*s);
+      s--;
+      i++;
+   }
+   
 	_putchar('\n');
 
 }
-
 
