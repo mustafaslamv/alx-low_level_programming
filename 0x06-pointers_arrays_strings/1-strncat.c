@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strncat - function that cat two strings but only n number of char from src
+ * _strncpy - function that copies a string
  * @dest: first string
  * @src: second string
  * @n: number of characters
@@ -9,19 +9,13 @@
  */
 
 
-char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int i = 0, j = 0;
-
-	while (dest[i] != '\0')
+	int i = 0;
+	while (i < n && dest[i] != '\0')
 	{
+		dest[i] = src[i];
 		i++;
-	}
-	while (j < n && src[j] != '\0')
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
 	}
 
 	return (dest);
