@@ -24,7 +24,7 @@ void print_positive_number(unsigned int num)
  * @num: The integer to be printed
  */
 
-void print_number(int num)
+void print_number(int n)
 {
 	if (num < 0)
 	{
