@@ -1,39 +1,26 @@
 #include "main.h"
 
 /**
- * print_positive_number - Prints a positive integer to the console
- *
- * @num: The positive integer to be printed
- */
-void print_positive_number(unsigned int num)
-{
-	int digit;
-
-	digit = num % 10;
-
-	if (num / 10 > 0)
-	{
-		print_positive_number(num / 10);
-	}
-	_putchar(digit + '0');
-}
-
-/**
- * print_number - Prints an integer to the console
- *
- * @num: The integer to be printed
- */
+  * print_number - print numbers chars
+  * @n: integer params
+  * Return: 0
+*/
 
 void print_number(int n)
 {
-	if (num < 0)
+	unsigned int n1;
+
+	n1 = n;
+
+	if (n < 0)
 	{
 		_putchar('-');
-		print_positive_number(-num);
+		n1 = -n;
 	}
-	else
-	{
-		print_positive_number(num);
-	}
-}
 
+	if (n1 / 10 != 0)
+	{
+		print_number(n1 / 10);
+	}
+	_putchar((n1 % 10) + '0');
+}
