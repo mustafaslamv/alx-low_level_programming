@@ -15,7 +15,7 @@ void print_positive_number(unsigned int num)
 	{
 		print_positive_number(num / 10);
 	}
-	putchar(digit + '0');
+	_putchar(digit + '0');
 }
 
 /**
@@ -28,7 +28,7 @@ void print_number(int n)
 {
 	if (num < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		print_positive_number(-num);
 	}
 	else
