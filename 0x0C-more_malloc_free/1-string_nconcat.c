@@ -40,8 +40,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	len1 = length(s1);
 	len2 = length(s2);
-	printf("len1 : %d\n", len1);
-	printf("len2 : %d\n", len2);
+
 	if (n >= len2)
 	{
 		n = len2;
