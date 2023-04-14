@@ -6,12 +6,12 @@
  * @nmemb: number of memory blocks
  * @size: size of each memory block
  * Return: pointer to new allocated memory
-*/
+ */
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *memory;
-    int i;
+	int i;
 
 	if (nmemb == 0 || size == 0)
 	{
@@ -22,10 +22,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-    for ( i = 0; i < (nmemb + size); i++)
-    {
-        memory[i] = 0;
-    }
-    
+	for (i = 0; i < (nmemb + size); i++)
+	{
+		memory[i] = 0;
+	}
+
 	return (memory);
 }
