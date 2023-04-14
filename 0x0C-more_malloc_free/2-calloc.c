@@ -11,20 +11,20 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *memory;
-	int i;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 	{
 		return (NULL);
 	}
-	memory = malloc(size * nmemb);
+	memory = malloc(nmemb * size);
 	if (memory == NULL)
 	{
 		return (NULL);
 	}
 	for (i = 0; i < (nmemb + size); i++)
 	{
-		memory[i] = 0;
+		*(memory + i) = 0;
 	}
 
 	return (memory);
