@@ -10,16 +10,16 @@
 int main(int argc, char *argv[])
 {
 	int number, i;
-
-	number = atoi(argv[1]);
-
-	char *p = (char *)main;
+	char *p;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
+
+	number = atoi(argv[1]);
+	p = (char *)main;
 
 	if (number < 0)
 	{
