@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int _putchar(char c);
 int op_add(int a, int b);
 int op_sub(int a, int b);
 int op_mul(int a, int b);
