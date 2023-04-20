@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	}
 
 	number = atoi(argv[1]);
-	p = (int *)main;
+	p = (char *)main;
 
 	if (number < 0)
 	{
