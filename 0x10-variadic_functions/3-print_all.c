@@ -75,6 +75,7 @@ void print_all(const char *const format, ...)
 
 	int num_ops = sizeof(ops) / sizeof(op_t);
 	va_list args;
+
 	va_start(args, format);
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -95,10 +96,4 @@ void print_all(const char *const format, ...)
 
 	printf("\n");
 	va_end(args);
-}
-
-int main(void)
-{
-	print_all("ceis", 'B', 3, "stSchool");
-	return (0);
 }
