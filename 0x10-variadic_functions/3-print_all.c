@@ -1,60 +1,51 @@
 #include "variadic_functions.h"
 
 /**
- * print_char - print float from var args
- *
- * @args: args to print from
- *
- * Return: void
+ * print_char - prints character
+ * @separator: the string separator
+ * @args: argument pointer
  */
-void print_char(va_list args)
+void print_char(char *separator, va_list args)
 {
-	printf("%c", (char)va_arg(args, int));
+	printf("%s%c", separator, va_arg(args, int));
 }
 
 /**
- * print_int - print int from var args
- *
- * @args: args to print from
- *
- * Return: void
+ * print_int - prints integer
+ * @separator: the string separator
+ * @args: argument pointer
  */
-void print_int(va_list args)
+void print_int(char *separator, va_list args)
 {
-	printf("%d", va_arg(args, int));
+	printf("%s%d", separator, va_arg(args, int));
 }
 
 /**
- * print_float - print float from var args
- *
- * @args: args to print from
- *
- * Return: void
+ * print_float - prints float
+ * @separator: the string separator
+ * @args: argument pointer
  */
-void print_float(va_list args)
+void print_float(char *separator, va_list args)
 {
-	printf("%f", (float)va_arg(args, double));
+	printf("%s%f", separator, va_arg(args, double));
 }
 
 /**
- * print_str - print str from var args
- *
- * @args: args to print from
- *
- * Return: void
+ * print_str - prints string
+ * @separator: the string separator
+ * @args: argument pointer
  */
-void print_str(va_list args)
+void print_str(char *separator, va_list args)
 {
-	char *s;
+	char *str = va_arg(args, char *);
 
-	s = va_arg(args, char *);
-	if (s == NULL)
+	if (str == NULL)
 	{
-		printf("(nil)");
+		printf("%s(nil)", separator);
 	}
 	else
 	{
-		printf("%s", s);
+		printf("%s%s", separator, str);
 	}
 }
 
@@ -64,36 +55,34 @@ void print_str(va_list args)
  */
 void print_all(const char *const format, ...)
 {
-	int i, j;
+	int i = 0, j;
+	char *separator = "";
+	va_list ap;
 
-	op_t ops[] = {
-		{'c', print_char},
-		{'i', print_int},
-		{'f', print_float},
-		{'s', print_str},
-	};
+	token_t tokens[] = {
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_str},
+		{NULL, NULL}};
 
-	int num_ops = sizeof(ops) / sizeof(op_t);
-	va_list args;
+	va_start(ap, format);
 
-	va_start(args, format);
-
-	for (i = 0; format[i] != '\0'; i++)
+	while (format && format[i])
 	{
-		for (j = 0; j < num_ops; j++)
+		j = 0;
+		while (tokens[j].token)
 		{
-			if (format[i] == ops[j].type)
+			if (format[i] == tokens[j].token[0])
 			{
-				ops[j].print_fn(args);
-				if (format[i + 1] != '\0')
-				{
-					printf(", ");
-				}
-				break;
+				tokens[j].f(separator, ap);
+				separator = ", ";
 			}
+			j++;
 		}
+		i++;
 	}
 
 	printf("\n");
-	va_end(args);
+	va_end(ap);
 }
