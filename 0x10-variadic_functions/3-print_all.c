@@ -1,88 +1,91 @@
 #include "variadic_functions.h"
 
 /**
- * print_char - prints character
- * @separator: the string separator
- * @args: argument pointer
+ * print_char - prints a char
+ * @args: the va_list to get the char from
  */
-void print_char(char *separator, va_list args)
+void print_char(va_list args)
 {
-	printf("%s%c", separator, va_arg(args, int));
+    printf("%c", va_arg(args, int));
 }
 
 /**
- * print_int - prints integer
- * @separator: the string separator
- * @args: argument pointer
+ * print_int - prints an int
+ * @args: the va_list to get the int from
  */
-void print_int(char *separator, va_list args)
+void print_int(va_list args)
 {
-	printf("%s%d", separator, va_arg(args, int));
+    printf("%d", va_arg(args, int));
 }
 
 /**
- * print_float - prints float
- * @separator: the string separator
- * @args: argument pointer
+ * print_float - prints a float
+ * @args: the va_list to get the float from
  */
-void print_float(char *separator, va_list args)
+void print_float(va_list args)
 {
-	printf("%s%f", separator, va_arg(args, double));
+    printf("%f", va_arg(args, double));
 }
 
 /**
- * print_str - prints string
- * @separator: the string separator
- * @args: argument pointer
+ * print_str - prints a string
+ * @args: the va_list to get the string from
  */
-void print_str(char *separator, va_list args)
+void print_str(va_list args)
 {
-	char *str = va_arg(args, char *);
+    char *str = va_arg(args, char*);
 
-	if (str == NULL)
-	{
-		printf("%s(nil)", separator);
-	}
-	else
-	{
-		printf("%s%s", separator, str);
-	}
+    if (str == NULL)
+    {
+        printf("(nil)");
+    }
+    else
+    {
+        printf("%s", str);
+    }
 }
 
 /**
- * print_all -  prints anything.
- * @format: list of types of arguments passed to the function
+ * print_all - prints anything
+ * @format: the format string that specifies the types of the arguments
  */
-void print_all(const char *const format, ...)
+void print_all(const char * const format, ...)
 {
-	int i = 0, j;
-	char *separator = "";
-	va_list ap;
+    int i = 0;
+    int j;
+    char *separator = "";
+    va_list args;
+    void (*print_func)(va_list);
 
-	token_t tokens[] = {
-		{"c", print_char},
-		{"i", print_int},
-		{"f", print_float},
-		{"s", print_str},
-		{NULL, NULL}};
+    va_start(args, format);
 
-	va_start(ap, format);
+    while (format && format[i])
+    {
+        j = 0;
+        print_func = NULL;
 
-	while (format && format[i])
-	{
-		j = 0;
-		while (tokens[j].token)
-		{
-			if (format[i] == tokens[j].token[0])
-			{
-				tokens[j].f(separator, ap);
-				separator = ", ";
-			}
-			j++;
-		}
-		i++;
-	}
+        while (j < 4 && !print_func)
+        {
+            if (format[i] == "cifs"[j])
+            {
+                print_func = (void (*)(va_list)) (j == 0 ? print_char :
+                                                    j == 1 ? print_int :
+                                                    j == 2 ? print_float :
+                                                    print_str);
+            }
+            j++;
+        }
 
-	printf("\n");
-	va_end(ap);
+        if (print_func)
+        {
+            printf("%s", separator);
+            print_func(args);
+            separator = ", ";
+        }
+
+        i++;
+    }
+
+    printf("\n");
+    va_end(args);
 }
