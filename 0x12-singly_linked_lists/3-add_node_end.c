@@ -4,6 +4,23 @@
 #include "lists.h"
 
 /**
+ * my_strlen - custom strlen
+ * @str: input string
+ * Return: length
+*/
+size_t my_strlen(const char *str)
+{
+	size_t len = 0;
+
+	while (*str != '\0')
+	{
+		len++;
+		str++;
+	}
+	return (len);
+}
+
+/**
  * add_node_end - function that adds a new node at the end
  * @head: start node
  * @str: string to be duplicated
@@ -28,7 +45,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		free(new_node);
 		return (NULL);
 	}
-	new_node->len = strlen(new_node->str);
+	new_node->len = my_strlen(new_node->str);
 	new_node->next = NULL;
 
 	if (*head == NULL)
