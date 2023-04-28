@@ -3,6 +3,18 @@
 #include <stdio.h>
 #include "lists.h"
 
+
+size_t my_strlen(const char *str)
+{
+	size_t len = 0;
+	while (*str != '\0')
+	{
+		len++;
+		str++;
+	}
+	return len;
+}
+
 /**
  * add_node - function that adds a new node at the beginning
  * @head: start node
@@ -26,7 +38,7 @@ list_t *add_node(list_t **head, const char *str)
 		free(new_node);
 		return (NULL);
 	}
-	new_node->len = strlen(new_node->str);
+	new_node->len = my_strlen(new_node->str);
 	new_node->next = *head;
 	*head = new_node;
 	return (new_node);
