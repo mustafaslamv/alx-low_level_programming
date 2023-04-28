@@ -3,16 +3,21 @@
 #include <stdio.h>
 #include "lists.h"
 
-
+/**
+ * my_strlen - custom strlen
+ * @str: input string
+ * Return: length
+*/
 size_t my_strlen(const char *str)
 {
 	size_t len = 0;
+
 	while (*str != '\0')
 	{
 		len++;
 		str++;
 	}
-	return len;
+	return (len);
 }
 
 /**
