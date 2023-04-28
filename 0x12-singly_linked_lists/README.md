@@ -6,9 +6,11 @@
 - How to build and use linked lists
 
 </br></br>
+
+---
 ## tasks ##
 
-</br></br>
+</br>
 
 - task 0:
 
@@ -73,3 +75,6 @@ Write a function that frees a list_t list.
 - Prototype: void free_list(list_t *head);
 - File: 4-free_list.c
 ```
+</br>
+
+---
