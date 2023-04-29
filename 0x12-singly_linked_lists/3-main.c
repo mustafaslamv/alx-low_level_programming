@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
@@ -44,4 +41,3 @@ int main(void)
     print_list(head);
     return (0);
 }
-
