@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/stat.h>
 #define BUFFER_SIZE 1024
 /**
  * open_file - helper function to open file
