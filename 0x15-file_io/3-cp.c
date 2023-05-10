@@ -14,7 +14,7 @@ int open_file(char *filename, int flags, mode_t mode)
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
+		exit(99);
 	}
 	return (fd);
 }
@@ -35,13 +35,13 @@ void read_write_data(int fd_from, int fd_to)
 		if (nwritten == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
-			exit(EXIT_FAILURE);
+			exit(99);
 		}
 	}
 	if (nread == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file\n");
-		exit(EXIT_FAILURE);
+		exit(98);
 	}
 }
 
@@ -54,7 +54,7 @@ void close_file(int fd)
 	if (close(fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(EXIT_FAILURE);
+		exit(100);
 	}
 }
 
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(EXIT_FAILURE);
+		exit(97);
 	}
 
 	file_from = argv[1];
