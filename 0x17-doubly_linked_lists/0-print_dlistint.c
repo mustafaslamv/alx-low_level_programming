@@ -1,26 +1,29 @@
 #include "lists.h"
 
 /**
- * print_dlistint_betty_style -  Prints all the elements of a dlistint_t list.
+ * print_dlistint - prints all the elements of a
+ * dlistint_t list
  *
  * @h: head of the list
- * Return:  the number of nodes
+ * Return: the number of nodes
  */
-size_t print_dlistint_betty_style(const dlistint_t *h)
+size_t print_dlistint(const dlistint_t *h)
 {
 	int count;
 
-	/* Check if the list is empty. */
-	if (h == NULL)
-	{
-		return (count);
-	}
+	count = 0;
 
-	/* Iterate through the list and print each node. */
-	for (dlistint_t *node = h; node != NULL; node = node->next)
+	if (h == NULL)
+		return (count);
+
+	while (h->prev != NULL)
+		h = h->prev;
+
+	while (h != NULL)
 	{
-		printf("%d\n", node->n);
+		printf("%d\n", h->n);
 		count++;
+		h = h->next;
 	}
 
 	return (count);
