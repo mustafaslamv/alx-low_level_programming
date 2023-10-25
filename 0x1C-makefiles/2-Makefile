@@ -1,1 +1,6 @@
-#!/usr/bin/bash
+CC = gcc
+SRC = main.c school.c
+NAME = school
+OBJ = main.o school.o
+all:
+	$(CC) $(SRC) -o $(NAME)
